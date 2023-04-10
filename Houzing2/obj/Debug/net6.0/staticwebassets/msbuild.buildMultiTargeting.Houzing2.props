@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Houzing2.props" />
+</Project>
