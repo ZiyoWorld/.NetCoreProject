@@ -1,2 +1,2 @@
 # .NetCoreProject
-this is example project
+this is example project for my 
