@@ -5,8 +5,12 @@
       "PackagePath": "staticwebassets\\Houzing2.bundle.scp.css"
     },
     {
-      "Id": "C:\\myfiles\\BGTU\\Houzing2\\Houzing2\\wwwroot\\css\\site.css",
-      "PackagePath": "staticwebassets\\css\\site.css"
+      "Id": "C:\\myfiles\\BGTU\\Houzing2\\Houzing2\\wwwroot\\assets\\icons\\Logo.svg",
+      "PackagePath": "staticwebassets\\assets\\icons\\Logo.svg"
+    },
+    {
+      "Id": "C:\\myfiles\\BGTU\\Houzing2\\Houzing2\\wwwroot\\css\\layout.css",
+      "PackagePath": "staticwebassets\\css\\layout.css"
     },
     {
       "Id": "C:\\myfiles\\BGTU\\Houzing2\\Houzing2\\wwwroot\\favicon.ico",

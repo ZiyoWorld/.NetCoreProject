@@ -1,0 +1,110 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content:flex-start;
+    align-items:center;
+    flex-direction:column;
+    position: relative;
+}
+
+.navbar-top {
+    position: fixed;
+    background: #0D263B;
+    height: 64px;
+    color: white;
+    width: 100%;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 130px;
+    max-width: 1440px;
+}
+.render-body{
+    padding: 20px 130px;
+    max-width: 1440px;
+    margin-top: 64px;
+}
+.logo-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    cursor: pointer;
+    text-decoration: none;
+}
+.logo-section p{
+    color: #fff;
+    font-size: 24px;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+.nav li:active{
+    color: brown;
+}
+.form-field {
+    width: 350px;
+    height: 400px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: column;
+}
+.title {
+    font-family: "Lexend Deca";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 80px;
+    text-align: center;
+    color: rgb(34, 73, 87);
+    margin: 15px 0px;
+    text-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;
+}
+.subtitle {
+    font-family: "Lexend Deca";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: rgb(34, 73, 87);
+}
+.login-input {
+    background: rgb(34, 73, 87);
+    width: 300px;
+    border-radius: 10px;
+    padding: 0px 20px;
+    margin: 10px 0px;
+    height: 45px;
+    border: none;
+    outline: none;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+}
+.login-btn {
+    width: 300px;
+    height: 45px;
+    border: none;
+    background: rgb(32, 223, 127);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 4px;
+    border-radius: 10px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(34, 73, 87);
+    font-size: 18px;
+    transition: all 0.1s linear 0s;
+    cursor: pointer;
+}

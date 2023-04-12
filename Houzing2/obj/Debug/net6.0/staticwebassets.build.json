@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "AhE0ApcA6/kv9jhkxOb2bqZMHWHQGUQN50fUVAAwckI=",
+  "Hash": "dYGT5ImuHR+cLlnFjHZnlRWkHId+RykyL+wDc/FIyUk=",
   "Source": "Houzing2",
   "BasePath": "_content/Houzing2",
   "Mode": "Default",
@@ -51,12 +51,12 @@
       "OriginalItemSpec": "C:\\myfiles\\BGTU\\Houzing2\\Houzing2\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Houzing2.bundle.scp.css"
     },
     {
-      "Identity": "C:\\myfiles\\BGTU\\Houzing2\\Houzing2\\wwwroot\\css\\site.css",
+      "Identity": "C:\\myfiles\\BGTU\\Houzing2\\Houzing2\\wwwroot\\assets\\icons\\Logo.svg",
       "SourceId": "Houzing2",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\myfiles\\BGTU\\Houzing2\\Houzing2\\wwwroot\\",
       "BasePath": "_content/Houzing2",
-      "RelativePath": "css/site.css",
+      "RelativePath": "assets/icons/Logo.svg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -65,7 +65,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\site.css"
+      "OriginalItemSpec": "wwwroot\\assets\\icons\\Logo.svg"
+    },
+    {
+      "Identity": "C:\\myfiles\\BGTU\\Houzing2\\Houzing2\\wwwroot\\css\\layout.css",
+      "SourceId": "Houzing2",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\myfiles\\BGTU\\Houzing2\\Houzing2\\wwwroot\\",
+      "BasePath": "_content/Houzing2",
+      "RelativePath": "css/layout.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\layout.css"
     },
     {
       "Identity": "C:\\myfiles\\BGTU\\Houzing2\\Houzing2\\wwwroot\\favicon.ico",
