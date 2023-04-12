@@ -1,2 +1,2 @@
 # .NetCoreProject
-this is example project for my 
+this is example project for my degree
