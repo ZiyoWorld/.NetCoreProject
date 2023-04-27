@@ -1,5 +1,6 @@
 ﻿@{
-    string username = User.Identity.Name;
+    string? username = User.Identity.Name;
+    string? auth = User.Identity.IsAuthenticated;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +11,6 @@
     <title>Houzing</title>
     <link rel="stylesheet" type="text/css" href="~/css/layout.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
@@ -18,9 +18,9 @@
     <link rel="icon" href="/images/movie_filter_FILL0_wght400_GRAD0_opsz48.svg">
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@500&display=swap" rel="stylesheet">
 </head>
-<body>
+<body id="body">
     
-    <div class="navbar-top"> 
+    <section class="navbar-top"> 
         <div class="wrapper">
         <a class="logo-section" href="/Home/Index">
             <img src="/assets/icons/Logo.svg" />
@@ -31,46 +31,54 @@
             <li class="nav-item"><a class="nav-link" href="/Home/About">Properties</a></li>
             <li class="nav-item"><a class="nav-link" href="/Home/Contact">Contacts</a></li>
         </ul>
-        <div>
-            <a class="btn btn-primary" href="/UserAuthentication/Index">Login</a>
+        <div style="display: flex;">
+                @if (!string.IsNullOrEmpty(auth))
+                {
+                    <a class="btn btn-success mx-2" href="/UseAuthentication/Index">Manager</a>
+                }
+                @if (!string.IsNullOrEmpty(username))
+                {
+                    
+                    <div class="dropdown">
+                        <a href="#" class="btn mx-2 btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="/Genre/Add">My properties </a></li>
+                            <li><a class="dropdown-item" href="/Movie/Add">Favoriets </a></li>
+                            <li><a class="dropdown-item" href="/UserAuthentication/Logout"> Logout </a></li>
+                        </ul>
+                    </div>
+                   
+                }
+
+                @if (string.IsNullOrEmpty(username))
+                {
+                    <button class="btn btn-primary" id="login-register" onclick="showModal()">Login</button>
+                }
+
+            </div>
         </div>
-        </div>
+    </section>
+    <div class="overlay" id="overlay"></div>
+    <div class="page-register-item" id="page-register-item">
+        <i class="close-btn">❌</i>
+        <a class="btn btn-primary" href="/UserAuthentication/Login">Login</a>
+        <a class="btn btn-primary" href="/UserAuthentication/Registration">Register</a>
     </div>
-   
-    @*<nav class="nav-bar bg-primary">
-       <div class="logo">
-            Houzing
-        </div>
-        <ul class="nav-link">
-            <li><a class="active" href="/Home/Index">Home</a></li>
-            <li><a href="/Home/About">About</a></li>
-            @if (!string.IsNullOrEmpty(username))
-            {
-                <li>
-                    <a href="#">Admin <i class="fa fa-caret-down"></i></a>
 
-                    <ul class="dropdown-nav-link">
-                        <li><a href="/Genre/Add">Genre</a></li>
-                        <li><a href="/Movie/Add">Movie</a></li>
-                        <li><a href="/UserAuthentication/Logout">Logout</a></li>
-                    </ul>
-                </li>
-            }
-
-            @if (string.IsNullOrEmpty(username))
-            {
-                <li><a href="/UserAuthentication/Login">Login</a></li>
-            }
-        </ul>
-    </nav>*@
-
-    <div class="render-body">
+    <section class="render-body" id="render-body">
         @RenderBody()
-    </div>
-    <footer>
-        &#169; 2022 Mirziyod Sunatillayev
-    </footer>
+    </section>
+
+    <section>
+        <footer>
+            &#169; 2022 Mirziyod Sunatillayev
+        </footer>
+    </section>
+   
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="/js/site.js"></script>
+
 </body>
 </html>

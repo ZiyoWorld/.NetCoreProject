@@ -1,6 +1,7 @@
 ﻿using Houzing2.Models.Domain;
 using Houzing2.Models.DTO;
 using Houzing2.Repositories.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,8 +10,8 @@ namespace Houzing2.Controllers
     public class UserAuthenticationController : Controller
     {
         private IUserAuthenticationServise authService;
-
-        public UserAuthenticationController(IUserAuthenticationServise authService)
+        UserManager<User> _userManager;
+        public UserAuthenticationController(IUserAuthenticationServise authService, )
         {
             this.authService = authService;
         }
@@ -20,56 +21,52 @@ namespace Houzing2.Controllers
            If you need other users ,you can implement this registration method with view
            I have create a complete tutorial for this, you can check the link in description box
           */
-
-
-
-        //public IActionResult Register()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Register(RegistrationModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        RegistrationModel user = await authService.RegisterAsync(model)
-        //        if (user == null)
-        //        {
-        //            // добавляем пользователя в бд
-        //            authService.RegisterAsync.Add(new RegistrationModel { Email = model.Email, Password = model.Password });
-        //            await db.SaveChangesAsync();
-
-        //            await Authenticate(model.Email); // аутентификация
-
-        //            return RedirectToAction("Index", "Home");
-        //        }
-        //        else
-        //            ModelState.AddModelError("", "Некорректные логин и(или) пароль");
-        //    }
-        //    return View(model);
-        //}
-
-
-        //var model = new RegistrationModel
-        //{
-        //    Email = "admin@gmail.com",
-        //    Username = "admin",
-        //    Name = "Mirziyod",
-        //    Password = "Admin@123",
-        //    PasswordConfirm = "Admin@123",
-        //    Role = "Admin"
-        //};
-        // if you want to register with user , Change Role="User"
-        //var result = await authService.RegisterAsync(model);
-        //return Ok(result.Message);
-
-        //[HttpGet]
         public IActionResult Index()
+        {
+            return View(authService.Users.ToList());
+        }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> RegisterAdmin()
+        {
+            var model = new RegistrationModel
+            {
+                Username = "admin",
+                Email = "admin@gmail.com",
+                FirstName = "Mirziyod",
+                LastName = "Sunatillayev",
+                Password = "Admin@123",
+                ConfirmPassword = "Admin@123",
+            };
+            model.Role = "admin";
+            var result = await this.authService.RegisterAsync(model);
+            return Ok(result.Message);
+            
+            
+        }
+
+        public IActionResult Registration()
         {
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Registration(RegistrationModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            model.Role = "user";
+            var result = await this.authService.RegisterAsync(model);
+            TempData["msg"] = result.Message;
+            return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel model)
         {
@@ -78,18 +75,36 @@ namespace Houzing2.Controllers
 
             var result = await authService.LoginAsync(model);
             if (result.StatusCode == 1)
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home");   
             else
             {
                 TempData["msg"] = "Could not logged in..";
-                return RedirectToAction("Index", "UserAuthentication");
+                return RedirectToAction("Login", "UserAuthentication");
             }
         }
 
         public async Task<IActionResult> Logout()
         {
             await authService.LogoutAsync();
-            return RedirectToAction(nameof(Login));
+            return RedirectToAction("Login", "UserAuthentication");
         }
+
+        [Authorize]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+            var result = await authService.ChangePasswordAsync(model, User.Identity.Name);
+            TempData["msg"] = result.Message;
+            return RedirectToAction(nameof(ChangePassword));
+        }
+
     }
 }

@@ -11,5 +11,6 @@ namespace Houzing2.Models.Domain
         {
 
         }
+        
     }
 }

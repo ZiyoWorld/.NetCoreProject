@@ -108,3 +108,31 @@ body {
     transition: all 0.1s linear 0s;
     cursor: pointer;
 }
+
+.overlay{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 100%;
+}
+
+
+.page-register-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 10%;
+    background: #fff;
+    border: none;
+    z-index: 10;
+    padding: 40px 20px;
+}
+.page-register-item i{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}

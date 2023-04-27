@@ -35,7 +35,7 @@ namespace Houzing2.Repositories.Implimentation
                 Email = model.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = model.Username,
-                Name = model.Name,
+                Name = model.FirstName,
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true,
             };
@@ -116,30 +116,30 @@ namespace Houzing2.Repositories.Implimentation
 
         }
 
-        //public async Task<Status> ChangePasswordAsync(ChangePasswordModel model, string username)
-        //{
-        //    var status = new Status();
+        public async Task<Status> ChangePasswordAsync(ChangePasswordModel model, string username)
+        {
+            var status = new Status();
 
-        //    var user = await userManager.FindByNameAsync(username);
-        //    if (user == null)
-        //    {
-        //        status.Message = "User does not exist";
-        //        status.StatusCode = 0;
-        //        return status;
-        //    }
-        //    var result = await userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
-        //    if (result.Succeeded)
-        //    {
-        //        status.Message = "Password has updated successfully";
-        //        status.StatusCode = 1;
-        //    }
-        //    else
-        //    {
-        //        status.Message = "Some error occcured";
-        //        status.StatusCode = 0;
-        //    }
-        //    return status;
+            var user = await userManager.FindByNameAsync(username);
+            if (user == null)
+            {
+                status.Message = "User does not exist";
+                status.StatusCode = 0;
+                return status;
+            }
+            var result = await userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+            if (result.Succeeded)
+            {
+                status.Message = "Password has updated successfully";
+                status.StatusCode = 1;
+            }
+            else
+            {
+                status.Message = "Some error occcured";
+                status.StatusCode = 0;
+            }
+            return status;
 
-        //}
+        }
     }
 }

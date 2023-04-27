@@ -19,7 +19,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 
 builder.Services.AddScoped<IUserAuthenticationServise, UserAuthenticationService>();
 
-// builder.Services.ConfigureApplicationCookie(options => options.LoginPath = "/UserAuthentication/Login");
+builder.Services.ConfigureApplicationCookie(options => options.LoginPath = "/UserAuthentication/Login");
 
 
 var app = builder.Build();

@@ -1,0 +1,23 @@
+﻿@model Houzing2.Models.DTO.LoginModel
+
+<div class="w-100">
+    <div class="tab-pane active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+            <form class="form-field needs-validation" novalidate asp-action="Login" method="post">
+                <h2 class="title">Login</h2>
+                <p class="subtitle">Login and start managing your candidates!</p>
+                    <input type="text" class="login-input" placeholder="Username" asp-for="Username">
+                    <input type="password" class="login-input" placeholder="Password" asp-for="Password">
+
+                @if (TempData["msg"] != null)
+            {
+                <div class="alert mb-1">
+                    @TempData["msg"]
+                </div>
+            }
+            <div class="input-container">
+                    <button class="login-btn" type="submit">Login</button>
+                </div>
+            </form>
+    </div>
+</div>
